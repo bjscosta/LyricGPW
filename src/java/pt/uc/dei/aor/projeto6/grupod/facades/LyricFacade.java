@@ -34,6 +34,13 @@ public class LyricFacade extends AbstractFacade<Lyric> {
         super(Lyric.class);
     }
 
+    /**
+     * method to find
+     *
+     * @param m
+     * @param u
+     * @return the single result of the query and null if there is no result
+     */
     public Lyric findLyricBySongIdAndUserId(Music m, UserPlay u) {
         try {
             return (Lyric) em.createNamedQuery("Lyric.findLyricByUserAndMusic").getSingleResult();
