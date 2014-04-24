@@ -72,6 +72,8 @@ public class UserPlay implements Serializable {
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userplay")
     private List<Playlist> playlists;
+    @OneToMany(mappedBy = "user")
+    private List<Lyric> lyricsList;
 
     public UserPlay(String name, String eMail, String password) {
         this.name = name;

@@ -18,6 +18,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
@@ -44,6 +45,8 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Music.allPopular", query = "SELECT m FROM Music m ORDER BY m.timesSelected DESC")
 })
 public class Music implements Serializable {
+    @OneToMany(mappedBy = "music")
+    private List<Lyric> lyricsList;
 
     private static final long serialVersionUID = 1L;
 

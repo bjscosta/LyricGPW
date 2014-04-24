@@ -7,12 +7,14 @@
 package pt.uc.dei.aor.projeto6.grupod.entities;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -32,6 +34,10 @@ public class Lyric implements Serializable {
     
     @ManyToOne
     private UserPlay user;
+    
+    @NotNull
+    @Column(name = "LYRIC_TEXT", nullable = false)
+    private String lyricText;
 
     public Long getLyricID() {
         return lyricID;
@@ -55,6 +61,14 @@ public class Lyric implements Serializable {
 
     public void setUser(UserPlay user) {
         this.user = user;
+    }
+
+    public String getLyricText() {
+        return lyricText;
+    }
+
+    public void setLyricText(String lyricText) {
+        this.lyricText = lyricText;
     }
     
     
