@@ -35,8 +35,6 @@ public class LyricsRestController {
         this.lyric = lyric;
     }
     
-    
-    
     public void findlyric(Music m){
         
         Client client = ClientBuilder.newClient();

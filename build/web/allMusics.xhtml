@@ -16,6 +16,8 @@
 
             <ui:define name ="content">
 
+
+
                 <table class="top-table" border="0" cellspacing="20">
                     <thead>
                     </thead>
@@ -166,14 +168,7 @@
                                             <f:facet name="header">
                                                 Lyric
                                             </f:facet>
-                                            <p:commandButton class="buttonLogin" value="See Lyric" oncomplete="PF('e').show()" update="popupLy"/>
-                                        </h:column>
-
-                                        <h:column>
-                                            <f:facet name="header">
-                                                Update Lyric
-                                            </f:facet>
-                                            <p:commandButton class="buttonLogin" value="Update Lyric" oncomplete="#{lyricsRestController.launchPopUp(music)}" update="popupLy" />
+                                            <p:commandButton value="See Lyric" onclick="PF('e').show()"/>
                                         </h:column>
 
                                         <h:column>
@@ -188,11 +183,9 @@
                                     <br/>
                                     <h:outputLabel value="#{musicController.errorCopyingtoPlaylist}" style="color: red"/>
 
+
                                 </h:form>
 
-                                <h:form id="popupLy">
-                                    <h:outputLabel value="#{lyricsRestController.lyric.lyricText}"/>
-                                </h:form>
 
                             </td>
                             <td align="center">
