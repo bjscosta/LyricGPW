@@ -1,0 +1,179 @@
+
+#top {
+    position: relative;
+    background-color:  lightgray;
+    color: black;
+    padding: 5px;
+    margin: 0px 0px 10px 0px;
+    width: 100%;
+    height: 50px;
+}
+
+#bottom {
+    position: relative;
+    background-color: grey;
+    padding: 5px;
+    margin: 10px 0px 0px 0px;
+}
+
+#left {
+    float: left;
+    background-color: lightgrey;
+    padding: 5px;
+    width: 6%;
+    height: 100%;
+}
+
+
+
+#right {
+    float: right;
+    float: top;
+    background-color: lightgrey;
+    padding: 5px;
+    width: 25%;
+    height: 100%;
+}
+
+.center_content {
+    position: relative;
+    background-color: white;
+    padding: 5px;
+    width: 70%;
+}
+
+.left_content {
+    background-color: white;
+    padding: 5px;
+    margin-left: 9%;
+    margin-right: 28%;
+    
+}
+
+.right_content {
+    background-color: white;
+    padding: 5px;
+    margin: 0px 170px 0px 170px;
+    width: 70%;
+}
+
+#top a:link, #top a:visited {
+    color: white;
+    font-weight : bold;
+    text-decoration: none;
+}
+
+#top a:link:hover, #top a:visited:hover  {
+    color: black;
+    font-weight : bold;
+    text-decoration : underline;
+}
+
+.orderTable {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: gray;
+    width: 100%;
+
+
+}
+
+.orderTable table{
+    width: 100%;
+}
+
+.orderTable th {
+
+    text-align: center;
+    background: none repeat scroll 0 0 #cccccc;
+    border-bottom: 1px solid;
+    padding: 8px;
+}
+
+.orderTable tbody{
+
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.orderTable tr{
+
+    text-align: center;
+    background: none repeat scroll 0 0 #999999;
+    border-top: 1px solid black;
+}
+
+.orderTable td {
+    display: table-cell;
+    vertical-align: inherit;
+    background:#eee;
+}
+
+.orderTable .person-table-odd-row{
+	text-align:center;
+        background:none repeat scroll 0 0 #999999;
+	border-top:1px solid black;
+}
+
+.orderTable .person-table-even-row{
+	text-align:center;
+	background:none repeat scroll 0 0 #cccccc;
+	border-top:1px solid black;
+}
+
+#javax_faces_developmentstage_messages{
+    display: none;
+}
+
+.topTenTable {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: black;
+    width: 100%;
+    
+
+
+}
+
+.topTenTable table{
+    width: 100%;
+}
+
+.topTenTable th {
+
+    text-align: center;
+    background: none repeat scroll 0 0 #cccccc;
+    border-bottom: 1px solid;
+    padding: 8px;
+    background: black;
+    color: white;
+}
+
+.topTenTable tbody{
+
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.topTenTable tr{
+
+    text-align: center;
+    background: none repeat scroll 0 0 #999999;
+    border-top: 1px solid black;
+}
+
+.topTenTable td {
+    display: table-cell;
+    vertical-align: inherit;
+    background: white;
+    
+}
+
+
+
+
+
