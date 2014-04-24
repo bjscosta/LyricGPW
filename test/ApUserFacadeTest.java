@@ -10,9 +10,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import pt.uc.dei.aor.projeto3.grupod.entities.UserPlay;
-import pt.uc.dei.aor.projeto3.grupod.exceptions.UserNotFoundException;
-import pt.uc.dei.aor.projeto3.grupod.facades.UserPlayFacade;
+import pt.uc.dei.aor.projeto6.grupod.entities.UserPlay;
+import pt.uc.dei.aor.projeto6.grupod.exceptions.UserNotFoundException;
+import pt.uc.dei.aor.projeto6.grupod.facades.UserPlayFacade;
 
 /**
  *
