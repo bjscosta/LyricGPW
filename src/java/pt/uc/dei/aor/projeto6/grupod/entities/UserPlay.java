@@ -33,24 +33,23 @@ import javax.validation.constraints.Size;
 @NamedQueries({
     @NamedQuery(name = "UserPlay.findByAll", query = "SELECT u FROM UserPlay u"),
     @NamedQuery(name = "UserPlay.findByUSERID", query = "SELECT u FROM UserPlay u WHERE u.userID = :userID"),
-    @NamedQuery(name = "UserPlay.findByEmail", query = "SELECT u FROM UserPlay u WHERE u.eMail = :eMail"),
-})
+    @NamedQuery(name = "UserPlay.findByEmail", query = "SELECT u FROM UserPlay u WHERE u.eMail = :eMail"),})
 public class UserPlay implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(unique = true,name = "USER_ID", nullable = false)
+    @Column(unique = true, name = "USER_ID", nullable = false)
     private Long userID;
-    
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 4, message = "The name must have more than 3 characters")
     @Column(name = "NAME", nullable = false)
     private String name;
-    
-    
+
     @Basic(optional = false)
     @NotNull
     @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\."
@@ -60,16 +59,16 @@ public class UserPlay implements Serializable {
             message = "Invalid e-mail")
     @Column(name = "E_MAIL", nullable = false, unique = true)
     private String eMail;
-    
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 4, message = "The password must have more than 3 characters")
     @Column(name = "PASSWORD", nullable = false)
     private String password;
-    
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userplay")
     private List<Music> songs;
-    
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userplay")
     private List<Playlist> playlists;
     @OneToMany(mappedBy = "user")
@@ -87,8 +86,7 @@ public class UserPlay implements Serializable {
         this.songs = new ArrayList<>();
         this.playlists = new ArrayList<>();
     }
-    
-    
+
     public Long getUserID() {
         return userID;
     }
@@ -113,8 +111,6 @@ public class UserPlay implements Serializable {
         this.eMail = eMail;
     }
 
-    
-
     public String getPassword() {
         return password;
     }
@@ -122,8 +118,14 @@ public class UserPlay implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    
+
+    public List<Lyric> getLyricsList() {
+        return lyricsList;
+    }
+
+    public void setLyricsList(List<Lyric> lyricsList) {
+        this.lyricsList = lyricsList;
+    }
 
     @Override
     public int hashCode() {
@@ -131,7 +133,7 @@ public class UserPlay implements Serializable {
         hash += (userID != null ? userID.hashCode() : 0);
         return hash;
     }
-    
+
     public List<Music> getSongs() {
         return songs;
     }
@@ -150,13 +152,13 @@ public class UserPlay implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the 
+        // TODO: Warning - this method won't work in the case the
         //userID fields are not set
         if (!(object instanceof UserPlay)) {
             return false;
         }
         UserPlay other = (UserPlay) object;
-        if ((this.userID == null && other.userID != null) 
+        if ((this.userID == null && other.userID != null)
                 || (this.userID != null && !this.userID.equals(other.userID))) {
             return false;
         }
@@ -167,5 +169,5 @@ public class UserPlay implements Serializable {
     public String toString() {
         return "entities.User[ id=" + userID + " ]";
     }
-    
+
 }

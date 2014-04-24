@@ -45,6 +45,7 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Music.allPopular", query = "SELECT m FROM Music m ORDER BY m.timesSelected DESC")
 })
 public class Music implements Serializable {
+
     @OneToMany(mappedBy = "music")
     private List<Lyric> lyricsList;
 
@@ -165,6 +166,14 @@ public class Music implements Serializable {
 
     public void setPlaylists(List<Playlist> playlists) {
         this.playlists = playlists;
+    }
+
+    public List<Lyric> getLyricsList() {
+        return lyricsList;
+    }
+
+    public void setLyricsList(List<Lyric> lyricsList) {
+        this.lyricsList = lyricsList;
     }
 
     @Override

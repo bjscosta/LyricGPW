@@ -13,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -22,6 +24,9 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "LYRIC")
+@NamedQueries({
+    @NamedQuery(name = "Lyric.findLyricByUserAndMusic", query = "SELECT l FROM Lyric l WHERE l.music "
+            + "= :music AND l.user = :user")})
 public class Lyric implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -31,10 +36,10 @@ public class Lyric implements Serializable {
 
     @ManyToOne
     private Music music;
-    
+
     @ManyToOne
     private UserPlay user;
-    
+
     @NotNull
     @Column(name = "LYRIC_TEXT", nullable = false)
     private String lyricText;
@@ -70,9 +75,7 @@ public class Lyric implements Serializable {
     public void setLyricText(String lyricText) {
         this.lyricText = lyricText;
     }
-    
-    
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
