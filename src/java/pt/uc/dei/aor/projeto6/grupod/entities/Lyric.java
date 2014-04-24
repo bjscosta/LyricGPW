@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -26,7 +27,11 @@ public class Lyric implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long lyricID;
 
+    @ManyToOne
     private Music music;
+    
+    @ManyToOne
+    private UserPlay user;
 
     public Long getLyricID() {
         return lyricID;
@@ -36,6 +41,24 @@ public class Lyric implements Serializable {
         this.lyricID = lyricID;
     }
 
+    public Music getMusic() {
+        return music;
+    }
+
+    public void setMusic(Music music) {
+        this.music = music;
+    }
+
+    public UserPlay getUser() {
+        return user;
+    }
+
+    public void setUser(UserPlay user) {
+        this.user = user;
+    }
+    
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;
