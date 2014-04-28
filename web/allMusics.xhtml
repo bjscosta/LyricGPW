@@ -169,7 +169,7 @@
                                             <f:facet name="header">
                                                 See Lyric
                                             </f:facet>
-                                            <p:commandButton rendered="#{lyricsRestController.haveLyric(music)}" value="See Lyric"  actionListener="#{lyricsRestController.showLyric(music)}" oncomplete="e.show()" update=":l"/>
+                                            <p:commandButton process="@this" rendered="#{lyricsRestController.haveLyric(music)}" value="See Lyric"  actionListener="#{lyricsRestController.showLyric(music)}" oncomplete="e.show()" update=":l"/>
 
                                         </h:column>
 
@@ -177,7 +177,7 @@
                                             <f:facet name="header">
                                                 Get Lyric
                                             </f:facet>
-                                            <p:commandButton value="Get Lyric"  actionListener="#{lyricsRestController.lyricGetAndShow(music)}" oncomplete="e.show()" update=":l"/>
+                                            <p:commandButton process="@this" value="Get Lyric"  actionListener="#{lyricsRestController.lyricGetAndShow(music)}" oncomplete="e.show()" update=":l"/>
 
                                         </h:column>
 
@@ -225,11 +225,12 @@
                 </table>
 
                 <p:dialog id="l" dynamic="true" header="Lyric" widgetVar="e" modal="true">
-                    <h:form>
-                        #{lyricsRestController.lyricFromDB}
-                    </h:form>
+                    <h:panelGrid>
+                        <p:outputLabel value="#{lyricsRestController.lyricFromDB}"/>
+                    </h:panelGrid>
 
                 </p:dialog>
+
 
             </ui:define>
         </ui:composition>
