@@ -246,7 +246,7 @@
                                             <f:facet name="header">
                                                 See Lyric
                                             </f:facet>
-                                            <p:commandButton rendered="#{lyricsRestController.haveLyric(music)}" value="See Lyric"  actionListener="#{lyricsRestController.showLyric(music)}" oncomplete="emy.show()" update=":lmy"/>
+                                            <p:commandButton rendered="#{lyricsRestController.haveLyricEdited(music)}" value="See Lyric"  actionListener="#{lyricsRestController.showLyric(music)}" oncomplete="emy.show()" update=":lmy"/>
 
                                         </p:column>
 
@@ -254,7 +254,7 @@
                                             <f:facet name="header">
                                                 Get Lyric
                                             </f:facet>
-                                            <p:commandButton process="@this" value="Get Lyric"  actionListener="#{lyricsRestController.lyricGetAndShow(music)}" oncomplete="emy.show()" update=":lmy"/>
+                                            <p:commandButton value="Get Lyric"  actionListener="#{lyricsRestController.lyricGetAndShow(music)}" oncomplete="emy.show()" update=":lmy"/>
 
                                         </p:column>
                                         <p:column>
@@ -318,19 +318,24 @@
                     </tbody>
                 </table>
 
-                <p:dialog width="50%" id="lmy" dynamic="true" header="Lyric" widgetVar="emy" modal="true">
+                <p:dialog width="50%" id="lmy" dynamic="true" header="Lyric" widgetVar="emy" modal="true" closable="false">
 
-                    <h:panelGrid>
+                    <h:form>
                         <p:outputLabel value="#{lyricsRestController.lyricFromDB}"/>
-                    </h:panelGrid>
+
+                        <br/>
+                        <div align="center">
+                            <p:commandButton ajax="false" value="Close" action="#{musicController.goAddMusicMy()}"/>
+                        </div>
+                    </h:form>
 
                 </p:dialog>
                 <p:dialog width="50%" id="edmy" dynamic="true" header="Edit Lyric" widgetVar="editmy" modal="true">
                     <h:form>
-
-                        <p:inputTextarea value="#{lyricsRestController.lyricFromDB}"/>
-                        <br/>
                         <div align="center">
+                            <p:inputTextarea rows="10" cols="60"  value="#{lyricsRestController.lyricFromDB}"/>
+                            <br/>
+
                             <p:commandButton value="Edit" ajax="false" action="#{lyricsRestController.editLyric()}" />
                         </div>
 

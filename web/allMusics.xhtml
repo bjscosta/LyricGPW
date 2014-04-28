@@ -165,24 +165,15 @@
 
                                         <p:column>
                                             <f:facet name="header">
-                                                See Lyric
+                                                Lyric
                                             </f:facet>
-                                            <p:commandButton rendered="#{lyricsRestController.haveLyric(music)}" value="See Lyric"  actionListener="#{lyricsRestController.showLyric(music)}" oncomplete="e.show()" update=":l"/>
+                                            <p:commandButton rendered="#{lyricsRestController.haveLyricEdited(music)}" value="See My Lyric"  actionListener="#{lyricsRestController.showLyric(music)}" oncomplete="e.show()" update=":l"/>
 
-                                        </p:column>
+                                            <p:commandButton rendered="#{lyricsRestController.haveLyricOriginal(music)}" value="See Original Lyric"  actionListener="#{lyricsRestController.showOriginalLyric(music)}" oncomplete="e.show()" update=":l"/>
 
-                                        <p:column>
-                                            <f:facet name="header">
-                                                Get Lyric
-                                            </f:facet>
-                                            <p:commandButton process="@this" value="Get Lyric"  actionListener="#{lyricsRestController.lyricGetAndShow(music)}" oncomplete="e.show()" update=":l"/>
+                                            <p:commandButton value="Get Lyric"  actionListener="#{lyricsRestController.lyricGetAndShow(music)}" oncomplete="e.show()" update=":l"/>
 
-                                        </p:column>
-                                        <p:column>
-                                            <f:facet name="header">
-                                                Edit Lyric
-                                            </f:facet>
-                                            <p:commandButton process="@this" value="Edit Lyric"  actionListener="#{lyricsRestController.lyricGetAndShow(music)}" oncomplete="edit.show()" update=":ed"/>
+                                            <p:commandButton value="Edit Lyric"  actionListener="#{lyricsRestController.lyricGetAndShow(music)}" oncomplete="edit.show()" update=":ed"/>
 
                                         </p:column>
 
@@ -229,17 +220,21 @@
                     </tbody>
                 </table>
 
-                <p:dialog width="50%" id="l" dynamic="true" header="Lyric" widgetVar="e" modal="true">
+                <p:dialog width="50%" id="l" dynamic="true" header="Lyric" widgetVar="e" modal="true" closable="false">
 
-                    <h:panelGrid>
+                    <h:form>
                         <p:outputLabel value="#{lyricsRestController.lyricFromDB}"/>
-                    </h:panelGrid>
+                        <br/>
+                        <div align="center">
+                            <p:commandButton ajax="false" value="Close" action="#{musicController.goAddMusicAll()}"/>
+                        </div>
+                    </h:form>
 
                 </p:dialog>
                 <p:dialog width="50%" id="ed" dynamic="true" header="Edit Lyric" widgetVar="edit" modal="true">
                     <h:form>
                         <div align="center">
-                            <p:inputTextarea value="#{lyricsRestController.lyricFromDB}"/>
+                            <p:inputTextarea rows="10" cols="60" value="#{lyricsRestController.lyricFromDB}"/>
                             <br/>
                             <p:commandButton value="Edit" ajax="false" action="#{lyricsRestController.editLyric()}" />
                         </div>

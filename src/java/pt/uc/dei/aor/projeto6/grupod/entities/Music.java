@@ -52,10 +52,13 @@ public class Music implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "SONG_ID")
     @Basic(optional = false)
     private Long songID;
+    
+    @Column(name = "LYRIC_ORIGINAL", length = 10000)
+    private String lyricOriginal;
 
     @Basic(optional = false)
     @NotNull
@@ -89,7 +92,8 @@ public class Music implements Serializable {
     @Column(name = "MUSIC_PATH", nullable = false)
     private String path;
 
-    @ManyToMany
+    
+    @ManyToMany(mappedBy = "songs")
     private List<Playlist> playlists;
 
     @JoinColumn(name = "USER_ID")
@@ -175,6 +179,16 @@ public class Music implements Serializable {
     public void setLyricsList(List<Lyric> lyricsList) {
         this.lyricsList = lyricsList;
     }
+
+    public String getLyricOriginal() {
+        return lyricOriginal;
+    }
+
+    public void setLyricOriginal(String lyricOriginal) {
+        this.lyricOriginal = lyricOriginal;
+    }
+    
+    
 
     @Override
     public int hashCode() {

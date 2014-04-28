@@ -452,5 +452,14 @@ public class MusicController {
     public void cancelMusic() {
         addMusicAll.setRendered(false);
     }
+    
+    public void goAddMusicAll() {
 
+        addToPlaylistAll.setRendered(false);
+        
+    }
+    
+    public void goAddMusicMy(){
+    addToPlaylistMy.setRendered(false);
+    }
 }
