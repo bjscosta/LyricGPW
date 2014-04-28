@@ -71,6 +71,7 @@ public class LyricsRestController {
                     lyricFacade.createLyric(lyric, m, userLoged.getUser());
                 } catch (CreateLyricException ex) {
                     Logger.getLogger(LyricsRestController.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println("o bruno é.....");
 
                 }
             }
@@ -92,11 +93,19 @@ public class LyricsRestController {
         lyricFromDB = "";
         findlyric(m);
         showLyric(m);
+
     }
 
     public boolean haveLyric(Music m) {
 
         return (lyricFacade.findLyricBySongIdAndUserId(m, userLoged.getUser()) != null);
+
+    }
+
+    public void editLyric() {
+        Lyric l = lyricFacade.findLyricBySongIdAndUserId(music, userLoged.getUser());
+        l.setLyricText(lyricFromDB);
+        lyricFacade.edit(l);
 
     }
 

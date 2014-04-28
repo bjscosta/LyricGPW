@@ -134,63 +134,68 @@
                             <td>
                                 <h:form>
 
-                                    <h:dataTable class="orderTable" id="table1" value="#{musicController.allMusic}" var="music"
-                                                 headerClass="person-table-header"
-                                                 rowClasses="person-table-odd-row,person-table-even-row">
+                                    <p:dataTable id="table1" value="#{musicController.allMusic}" var="music">
 
 
-                                        <h:column>
+                                        <p:column>
 
                                             <f:facet name="header">
                                                 Title
                                             </f:facet>
                                             #{music.title}
-                                        </h:column>
-                                        <h:column>
+                                        </p:column>
+                                        <p:column>
                                             <f:facet name="header">
                                                 Artist
                                             </f:facet>
                                             #{music.artist}
-                                        </h:column>
-                                        <h:column>
+                                        </p:column>
+                                        <p:column>
                                             <f:facet name="header">
                                                 Album
                                             </f:facet>
                                             #{music.album}
-                                        </h:column>
-                                        <h:column>
+                                        </p:column>
+                                        <p:column>
                                             <f:facet name="header">
                                                 Release Year
                                             </f:facet>
                                             #{music.releaseYEAR}
-                                        </h:column>
+                                        </p:column>
 
-                                        <h:column>
+                                        <p:column>
                                             <f:facet name="header">
                                                 See Lyric
                                             </f:facet>
                                             <p:commandButton process="@this" rendered="#{lyricsRestController.haveLyric(music)}" value="See Lyric"  actionListener="#{lyricsRestController.showLyric(music)}" oncomplete="e.show()" update=":l"/>
 
-                                        </h:column>
+                                        </p:column>
 
-                                        <h:column>
+                                        <p:column>
                                             <f:facet name="header">
                                                 Get Lyric
                                             </f:facet>
                                             <p:commandButton process="@this" value="Get Lyric"  actionListener="#{lyricsRestController.lyricGetAndShow(music)}" oncomplete="e.show()" update=":l"/>
 
-                                        </h:column>
+                                        </p:column>
+                                        <p:column>
+                                            <f:facet name="header">
+                                                Edit Lyric
+                                            </f:facet>
+                                            <p:commandButton process="@this" value="Edit Lyric"  actionListener="#{lyricsRestController.lyricGetAndShow(music)}" oncomplete="edit.show()" update=":ed"/>
+
+                                        </p:column>
 
 
-                                        <h:column>
+                                        <p:column>
                                             <f:facet name="header">
                                                 Copy to Playlist
                                             </f:facet>
 
-                                            <h:commandButton class="buttonLogin" value="Copy" action="#{musicController.showListAll(music)}"/>
-                                        </h:column>
+                                            <p:commandButton ajax="false" value="Copy" action="#{musicController.showListAll(music)}"/>
+                                        </p:column>
 
-                                    </h:dataTable>
+                                    </p:dataTable>
                                     <br/>
                                     <h:outputLabel value="#{musicController.errorCopyingtoPlaylist}" style="color: red"/>
 
@@ -225,9 +230,21 @@
                 </table>
 
                 <p:dialog id="l" dynamic="true" header="Lyric" widgetVar="e" modal="true">
+
                     <h:panelGrid>
                         <p:outputLabel value="#{lyricsRestController.lyricFromDB}"/>
                     </h:panelGrid>
+
+                </p:dialog>
+                <p:dialog id="ed" dynamic="true" header="Edit Lyric" widgetVar="edit" modal="true">
+                    <h:form>
+                        <div align="center">
+                            <p:inputText value="#{lyricsRestController.lyricFromDB}"/>
+                            <br/>
+                            <p:commandButton value="Edit" ajax="false" action="#{lyricsRestController.editLyric()}" />
+                        </div>
+
+                    </h:form>
 
                 </p:dialog>
 
