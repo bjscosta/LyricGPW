@@ -167,7 +167,7 @@
                                             <f:facet name="header">
                                                 See Lyric
                                             </f:facet>
-                                            <p:commandButton process="@this" rendered="#{lyricsRestController.haveLyric(music)}" value="See Lyric"  actionListener="#{lyricsRestController.showLyric(music)}" oncomplete="e.show()" update=":l"/>
+                                            <p:commandButton rendered="#{lyricsRestController.haveLyric(music)}" value="See Lyric"  actionListener="#{lyricsRestController.showLyric(music)}" oncomplete="e.show()" update=":l"/>
 
                                         </p:column>
 
@@ -229,17 +229,17 @@
                     </tbody>
                 </table>
 
-                <p:dialog id="l" dynamic="true" header="Lyric" widgetVar="e" modal="true">
+                <p:dialog width="50%" id="l" dynamic="true" header="Lyric" widgetVar="e" modal="true">
 
                     <h:panelGrid>
                         <p:outputLabel value="#{lyricsRestController.lyricFromDB}"/>
                     </h:panelGrid>
 
                 </p:dialog>
-                <p:dialog id="ed" dynamic="true" header="Edit Lyric" widgetVar="edit" modal="true">
+                <p:dialog width="50%" id="ed" dynamic="true" header="Edit Lyric" widgetVar="edit" modal="true">
                     <h:form>
                         <div align="center">
-                            <p:inputText value="#{lyricsRestController.lyricFromDB}"/>
+                            <p:inputTextarea value="#{lyricsRestController.lyricFromDB}"/>
                             <br/>
                             <p:commandButton value="Edit" ajax="false" action="#{lyricsRestController.editLyric()}" />
                         </div>
