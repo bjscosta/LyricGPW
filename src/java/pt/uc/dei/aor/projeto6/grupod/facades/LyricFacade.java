@@ -43,7 +43,8 @@ public class LyricFacade extends AbstractFacade<Lyric> {
      */
     public Lyric findLyricBySongIdAndUserId(Music m, UserPlay u) {
         try {
-            return (Lyric) em.createNamedQuery("Lyric.findLyricByUserAndMusic").getSingleResult();
+            return (Lyric) em.createNamedQuery("Lyric.findLyricByUserAndMusic").setParameter("music", m)
+                    .setParameter("user", u).getSingleResult();
         } catch (NoResultException ex) {
             return null;
         }
