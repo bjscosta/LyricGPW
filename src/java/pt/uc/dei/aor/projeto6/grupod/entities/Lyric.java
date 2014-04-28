@@ -44,7 +44,7 @@ public class Lyric implements Serializable {
 
     @NotNull
     @Basic(fetch = FetchType.LAZY)
-    @Column(name = "LYRIC_TEXT", nullable = false, length = 100000)
+    @Column(name = "LYRIC_TEXT", nullable = false, length = 1000000000)
     private String lyricText;
 
     public Long getLyricID() {
