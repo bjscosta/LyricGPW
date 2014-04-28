@@ -206,7 +206,7 @@ public class UserController {
     }
 
     public static File getMusicFolder(UserPlay u) {
-        
+
         File f = new File("/Users/brunocosta/Documents/Work/Acertar o Rumo/PA.JAVA/GetPlayWeb2/music");
         f.mkdir();
         return f;
@@ -223,8 +223,7 @@ public class UserController {
 
             UserPlay userN = userPlayFacade.newUser(user, password2);
             userLogedEJB.setUser(userN);
-            File f = new File(getMusicFolder(user).getAbsolutePath()+"/"+user.geteMail());
-            f.mkdir();
+
             return "myPlaylists";
         } catch (DuplicateEmailException e) {
             emailExists = e.getMessage();
@@ -237,8 +236,6 @@ public class UserController {
                     log(Level.SEVERE, null, ex);
             return null;
         }
-
-        
 
     }
 

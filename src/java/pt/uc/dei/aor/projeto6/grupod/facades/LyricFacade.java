@@ -60,6 +60,7 @@ public class LyricFacade extends AbstractFacade<Lyric> {
             em.merge(m);
             em.merge(u);
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             throw new CreateLyricException();
 
         }

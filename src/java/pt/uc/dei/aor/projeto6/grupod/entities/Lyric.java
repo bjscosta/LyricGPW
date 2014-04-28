@@ -7,8 +7,10 @@
 package pt.uc.dei.aor.projeto6.grupod.entities;
 
 import java.io.Serializable;
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -41,7 +43,8 @@ public class Lyric implements Serializable {
     private UserPlay user;
 
     @NotNull
-    @Column(name = "LYRIC_TEXT", nullable = false)
+    @Basic(fetch = FetchType.LAZY)
+    @Column(name = "LYRIC_TEXT", nullable = false, length = 100000)
     private String lyricText;
 
     public Long getLyricID() {
